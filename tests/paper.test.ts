@@ -1,4 +1,5 @@
 
+import {Paper}  from './../src/paper';
 
 
 describe("Paper", ()=>{
