@@ -18,5 +18,12 @@ describe("Paper", ()=>{
         expect(paper.content).toBe("Text");
     })
 
+    it("should append text to the existing content", () => {
+        paper.write("Hey");
+        paper.write(" there");
+
+        expect(paper.content).toBe("Hey there")
+    })
+
     
 })
