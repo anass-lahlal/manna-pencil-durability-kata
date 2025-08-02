@@ -1,0 +1,19 @@
+{
+  "name": "manna-pencil-durability-kata",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "jest --watchAll --verbose"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  },
+  "dependencies": {
+    "jest": "^30.0.5"
+  }
+}
