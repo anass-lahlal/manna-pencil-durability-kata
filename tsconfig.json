@@ -9,8 +9,9 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "moduleDetection": "force",
+    "esModuleInterop": true,
     "noEmit": true,
 
     /* Linting */
@@ -22,6 +23,11 @@
     "noUncheckedSideEffectImports": true,
   },
   "include": ["src"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "typeAcquisition": {
     "include": ["jest"]
   }
