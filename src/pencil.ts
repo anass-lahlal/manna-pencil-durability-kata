@@ -29,6 +29,10 @@ export class Pencil {
         return result;
     }
 
+    sharpen() {
+        this.currentPointDurability = this.pointDurability;
+    }
+
     private getDurabilityCost(char: string): number {
         if(/\s/.test(char)) return 0;
 
