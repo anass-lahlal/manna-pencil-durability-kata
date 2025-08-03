@@ -78,4 +78,12 @@ describe("Pencil", () => {
         
         expect(paper.content).toBe("How much wood would a woodchuck chuck if a woodchuck could       wood?")
     })
+
+    it("should leave text intact if there is no occurrence of the word to be erased", () => {
+        const sentence = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
+        pencil.write(sentence, paper);
+        pencil.erase("John", paper);
+
+        expect(paper.content).toBe(sentence);
+    })
 })
