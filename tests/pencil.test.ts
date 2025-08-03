@@ -86,4 +86,11 @@ describe("Pencil", () => {
 
         expect(paper.content).toBe(sentence);
     })
+
+    it("should consume eraser durability when erasing characters", () => {
+        pencil.write("Hello".repeat(10), paper);
+        pencil.erase("o", paper);
+
+        expect(pencil.eraserDurability).toBe(eraserDurability - 1);
+    })
 })
