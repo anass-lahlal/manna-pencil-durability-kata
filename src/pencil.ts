@@ -17,9 +17,11 @@ export class Pencil {
         for(let char of text) {
             if(/\s/.test(char)) {
                 //do not consume point
+            } else if (/[A-Z]/.test(char)) {
+                this.currentPointDurability -= 2
             } else {
                 this.currentPointDurability -= 1
-            }
+            }    
             result += char;
         }
 
