@@ -71,4 +71,11 @@ describe("Pencil", () => {
 
         expect(pencil.currentPointDurability).toBe(0);
     })
+
+    it("should replace last occurrence of text with empty spaces", () => {
+        pencil.write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?", paper);
+        pencil.erase("chuck", paper);
+        
+        expect(paper.content).toBe("How much wood would a woodchuck chuck if a woodchuck could       wood?")
+    })
 })
