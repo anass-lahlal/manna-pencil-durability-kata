@@ -64,7 +64,7 @@ export class Pencil {
         }
 
         const updatedContent = content.slice(0, lastOccurenceIndex) + replacement.reverse().join("") + content.slice(lastOccurenceIndex + term.length);
-        paper.content = updatedContent;
+        paper.override(updatedContent);
     }
 
     private getDurabilityCost(char: string): number {

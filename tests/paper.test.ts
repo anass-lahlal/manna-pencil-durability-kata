@@ -25,5 +25,10 @@ describe("Paper", ()=>{
         expect(paper.content).toBe("Hey there")
     })
 
-    
+    it("should override the paper content", () => {
+        paper.write("Hey there");
+        paper.override("New content");
+
+        expect(paper.content).toBe("New content");
+    })
 })

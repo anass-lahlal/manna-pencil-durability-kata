@@ -5,4 +5,8 @@ export class Paper {
     write(txt: string) {
         this.content += txt;
     }
+
+    override(txt: string) {
+        this.content = txt;
+    }
 }
