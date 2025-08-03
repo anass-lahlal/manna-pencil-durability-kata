@@ -53,4 +53,9 @@ describe("Pencil", () => {
         pencil.sharpen();
         expect(pencil.currentPointDurability).toBe(pointDurability);
     })
+
+    it("should decrease length of pencil when sharpened", () => {
+        pencil.sharpen();
+        expect(pencil.length).toBe(length - 1);
+    })
 })
