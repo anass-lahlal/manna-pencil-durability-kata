@@ -45,4 +45,12 @@ describe("Pencil", () => {
         const result = pencil.write("Hey");
         expect(result).toBe("   ");
     })
+
+    it("should reset durability points when sharpened", () => {
+        pencil.write("a".repeat(pointDurability));
+        expect(pencil.currentPointDurability).toBe(0);
+
+        pencil.sharpen();
+        expect(pencil.currentPointDurability).toBe(pointDurability);
+    })
 })
