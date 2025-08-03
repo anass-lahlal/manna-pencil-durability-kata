@@ -1,3 +1,5 @@
+import { Paper } from "./paper";
+
 export class Pencil {
     pointDurability: number;
     eraserDurability: number;
@@ -12,7 +14,7 @@ export class Pencil {
     }
 
 
-    write(text: string): string {
+    write(text: string, paper: Paper) {
         let result = "";
         for(let char of text) {
             const cost = this.getDurabilityCost(char);
@@ -26,12 +28,12 @@ export class Pencil {
             
         }
 
-        return result;
+        paper.write(result);
     }
 
     sharpen() {
         if(this.length === 0) return;
-        
+
         this.length -= 1;
         this.currentPointDurability = this.pointDurability;
     }
