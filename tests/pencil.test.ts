@@ -21,4 +21,11 @@ describe("Pencil", () => {
         pencil.write(" ".repeat(10));
         expect(pencil.currentPointDurability).toBe(pointDurability);
     })
+
+
+    it("should consume 2 durability points on uppercase letters", () => {
+        const repeats = 10;
+        pencil.write("A".repeat(repeats));
+        expect(pencil.currentPointDurability).toBe(pointDurability - repeats * 2);
+    })
 })
