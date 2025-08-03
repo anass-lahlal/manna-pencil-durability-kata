@@ -34,4 +34,9 @@ describe("Pencil", () => {
         pencil.write("a".repeat(repeats));
         expect(pencil.currentPointDurability).toBe(pointDurability - repeats);
     })
+
+    it("should return text to write when durability point is available", () => {
+        const result = pencil.write("Test");
+        expect(result).toBe("Test");
+    })
 })
