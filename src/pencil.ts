@@ -15,16 +15,19 @@ export class Pencil {
     write(text: string): string {
         let result = "";
         for(let char of text) {
-            if(/\s/.test(char)) {
-                //do not consume point
-            } else if (/[A-Z]/.test(char)) {
-                this.currentPointDurability -= 2
-            } else {
-                this.currentPointDurability -= 1
-            }    
+            const cost = this.getDurabilityCost(char);
+            this.currentPointDurability -= cost;   
             result += char;
         }
 
         return result;
+    }
+
+    private getDurabilityCost(char: string): number {
+        if(/\s/.test(char)) return 0;
+
+        if(/[A-Z]/.test(char)) return 2;
+
+        return 1;
     }
 }
