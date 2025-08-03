@@ -16,8 +16,14 @@ export class Pencil {
         let result = "";
         for(let char of text) {
             const cost = this.getDurabilityCost(char);
-            this.currentPointDurability -= cost;   
-            result += char;
+            
+            if(cost > this.currentPointDurability) {
+                result += " ";
+            } else {
+                this.currentPointDurability -= cost;   
+                result += char;
+            }
+            
         }
 
         return result;
