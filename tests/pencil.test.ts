@@ -58,4 +58,14 @@ describe("Pencil", () => {
         pencil.sharpen();
         expect(pencil.length).toBe(length - 1);
     })
+
+    it("should be sharpened as long as it has some remaining length", () => {
+        const sharpeningTimes = length + 1;
+        for(let i = 0; i < sharpeningTimes; i++) {
+            pencil.write("a".repeat(pointDurability));
+            pencil.sharpen();
+        }
+
+        expect(pencil.currentPointDurability).toBe(0);
+    })
 })
