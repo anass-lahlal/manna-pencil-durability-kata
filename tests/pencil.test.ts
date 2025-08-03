@@ -39,4 +39,10 @@ describe("Pencil", () => {
         const result = pencil.write("Test");
         expect(result).toBe("Test");
     })
+
+    it("should return empty space instead of characters when durability points are depleted", () => {
+        pencil.write("a".repeat(pointDurability));
+        const result = pencil.write("Hey");
+        expect(result).toBe("   ");
+    })
 })
