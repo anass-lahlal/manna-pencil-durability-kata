@@ -30,6 +30,8 @@ export class Pencil {
     }
 
     sharpen() {
+        if(this.length === 0) return;
+        
         this.length -= 1;
         this.currentPointDurability = this.pointDurability;
     }
