@@ -38,6 +38,16 @@ export class Pencil {
         this.currentPointDurability = this.pointDurability;
     }
 
+    erase(term: string, paper: Paper) {
+        const {content} = paper;
+        const lastOccurenceIndex = content.lastIndexOf(term);
+
+        if(lastOccurenceIndex === -1) return;
+
+        const updatedContent = content.slice(0, lastOccurenceIndex) + " ".repeat(term.length) + content.slice(lastOccurenceIndex + term.length);
+        paper.content = updatedContent;
+    }
+
     private getDurabilityCost(char: string): number {
         if(/\s/.test(char)) return 0;
 
