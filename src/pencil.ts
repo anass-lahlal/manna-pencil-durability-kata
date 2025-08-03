@@ -44,7 +44,26 @@ export class Pencil {
 
         if(lastOccurenceIndex === -1) return;
 
-        const updatedContent = content.slice(0, lastOccurenceIndex) + " ".repeat(term.length) + content.slice(lastOccurenceIndex + term.length);
+        let chars = term.split('').reverse();
+        const replacement = [];
+
+        for(let char of chars) {
+            const isEmptySpace = /\s/.test(char);
+            if(isEmptySpace) {
+                replacement.push(char);
+                continue;
+            }
+
+            if(this.eraserDurability > 0) {
+                replacement.push(" ");
+                this.eraserDurability -= 1;
+                continue;
+            }
+
+            replacement.push(char);
+        }
+
+        const updatedContent = content.slice(0, lastOccurenceIndex) + replacement.reverse().join("") + content.slice(lastOccurenceIndex + term.length);
         paper.content = updatedContent;
     }
 
