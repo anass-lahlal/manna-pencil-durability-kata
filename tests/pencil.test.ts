@@ -93,4 +93,19 @@ describe("Pencil", () => {
 
         expect(pencil.eraserDurability).toBe(eraserDurability - 1);
     })
+
+    it("should consume 0 eraser durability when there is no match", () => {
+        pencil.write("Hello", paper);
+        pencil.erase("K", paper);
+
+        expect(pencil.eraserDurability).toBe(eraserDurability);
+    })
+
+    it("should consume 0 eraser durability when erasing an empty space", () => {
+        pencil.write("Hello there!", paper);
+        pencil.erase(" ", paper);
+
+        expect(pencil.eraserDurability).toBe(eraserDurability);
+        expect(paper.content).toBe("Hello there!")
+    })
 })
