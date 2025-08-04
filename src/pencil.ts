@@ -67,6 +67,30 @@ export class Pencil {
         paper.override(updatedContent);
     }
 
+    edit(index: number, term: string, paper: Paper) {
+        const {content} = paper;
+        const segment = content.slice(index, index + term.length);
+
+        let result = "";
+        for(let i = 0; i < term.length; i++) {
+            const isEmptySpace = /\s/.test(segment.charAt(i) ?? ' ');
+            const cost = this.getDurabilityCost(term[i]);
+            if(isEmptySpace) {
+                if(cost > this.currentPointDurability) {
+                    result += segment.charAt(i);
+                } else {
+                    result += term[i];
+                    this.currentPointDurability -= cost;
+                }
+            } else {
+                result+= '@';
+            }
+        }
+
+        const editedContent = content.slice(0, index) + result + content.slice(index + term.length);
+        paper.override(editedContent);
+    }
+
     private getDurabilityCost(char: string): number {
         if(/\s/.test(char)) return 0;
 
