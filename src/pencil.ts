@@ -77,7 +77,7 @@ export class Pencil {
             const cost = this.getDurabilityCost(term[i]);
             if(isEmptySpace) {
                 if(cost > this.currentPointDurability) {
-                    result += segment[i];
+                    result += (segment[i] ?? ' ');
                 } else {
                     result += term[i];
                     this.currentPointDurability -= cost;
