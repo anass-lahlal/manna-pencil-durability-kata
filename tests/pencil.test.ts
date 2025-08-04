@@ -108,4 +108,42 @@ describe("Pencil", () => {
         expect(pencil.eraserDurability).toBe(eraserDurability);
         expect(paper.content).toBe("Hello there!")
     })
+
+    it("should be able to edit", () => {
+        pencil.write("Hello there", paper);
+        pencil.erase("there", paper);
+
+        const cursorIndex = 6;
+        pencil.edit(cursorIndex, "John!", paper);
+
+        expect(paper.content).toBe("Hello John!");
+    })
+
+    it("should be able to edit and consume credits for added characters", () => {
+        pencil.write("Hello there", paper);
+        pencil.erase("there", paper);
+
+        const cursorIndex = 6;
+        pencil.edit(cursorIndex, "John!", paper);
+
+        expect(pencil.currentPointDurability).toBe(pointDurability - 11 - 6);
+    })
+
+    it("should not consume credits for empty spaces while editing", () => {
+        pencil.write("Hello there", paper);
+        pencil.erase("there", paper);
+
+        const cursorIndex = 6;
+        pencil.edit(cursorIndex, "A I", paper);
+
+        expect(pencil.currentPointDurability).toBe(pointDurability - 11 - 4);
+    })
+
+    it("should replace collisions with @ character", () => {
+        pencil.write("hotdog", paper);
+        pencil.erase("hot", paper);
+        pencil.edit(0, "nice", paper);
+
+        expect(paper.content).toBe("nic@og");
+    })
 })
