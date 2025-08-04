@@ -146,4 +146,12 @@ describe("Pencil", () => {
 
         expect(paper.content).toBe("nic@og");
     })
+
+    it("should add new characters if the edit is at the end of the sentence", () => {
+        pencil.write("hello there", paper);
+        pencil.erase("there", paper);
+        pencil.edit(6, "how are you?", paper);
+
+        expect(paper.content).toBe("hello how are you?");
+    })
 })
