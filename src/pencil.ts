@@ -73,11 +73,11 @@ export class Pencil {
 
         let result = "";
         for(let i = 0; i < term.length; i++) {
-            const isEmptySpace = /\s/.test(segment.charAt(i) ?? ' ');
+            const isEmptySpace = /\s/.test(segment[i] ?? ' ');
             const cost = this.getDurabilityCost(term[i]);
             if(isEmptySpace) {
                 if(cost > this.currentPointDurability) {
-                    result += segment.charAt(i);
+                    result += segment[i];
                 } else {
                     result += term[i];
                     this.currentPointDurability -= cost;
